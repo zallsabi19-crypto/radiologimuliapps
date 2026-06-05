@@ -1,5 +1,5 @@
 <!-- Ganti URL di bawah dengan URL Aplikasi Web Baru hasil Langkah 2 -->
-<form id="radiologiForm" action="URL_APL_WEB_BARU_ANDA" method="POST">
+<form id="radiologiForm" action="[URL_APL_WEB_BARU_ANDA](https://script.google.com/macros/s/AKfycbyS5HwEZ153pPM258J8bYMjGJTe2zeBN_NOW9hkvl6EmNY87JuappUzRa8RCz92y9KV-g/exec )" method="POST">
   
   <label>Nomor ID</label>
   <input type="text" name="nomorID" required>
