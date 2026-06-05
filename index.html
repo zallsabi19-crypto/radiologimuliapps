@@ -1,156 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radiologi Apps</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
-}
-
-body{
-    background:#f4f7fb;
-    padding:30px;
-}
-
-.container{
-    max-width:700px;
-    margin:auto;
-}
-
-.header{
-    background:#0d6efd;
-    color:white;
-    padding:20px;
-    border-radius:10px;
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.card{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-.form-group{
-    margin-bottom:15px;
-}
-
-label{
-    display:block;
-    margin-bottom:5px;
-    font-weight:bold;
-}
-
-input, select, textarea{
-    width:100%;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:6px;
-}
-
-textarea{
-    resize:vertical;
-}
-
-button{
-    background:#0d6efd;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:6px;
-    cursor:pointer;
-    width:100%;
-    font-size:16px;
-}
-
-button:hover{
-    background:#0b5ed7;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiologi Apps</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; }
+        form { background: white; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { margin-top: 20px; width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+        h2 { text-align: center; color: #333; }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <h2>🏥 Form Pendaftaran Pemeriksaan Radiologi<br><small>Klinik Mulia</small></h2>
 
-    <div class="header">
-        <h1>🏥 Radiologi Klinik Mulia</h1>
-        <p>Form Pendaftaran Pemeriksaan Radiologi</p>
-    </div>
+    <form id="radiologiForm" action="https://script.google.com/macros/s/AKfycbyS5HwEZ153pPM258J8bYMjGJTe2zeBN_NOW9hkvl6EmNY87JuappUzRa8RCz92y9KV-g/exec" method="POST">
+      
+      <label>Nomor ID</label>
+      <input type="text" name="nomorID" placeholder="Masukkan Nomor Rekam Medis" required>
 
-    <div class="card">
-        <form id="radiologiForm">
+      <label>Nama Pasien</label>
+      <input type="text" name="namaPasien" placeholder="Masukkan Nama Pasien" required>
 
-            <div class="form-group">
-                <label>Nomor RM</label>
-                <input type="text" name="rm" placeholder="Masukkan Nomor Rekam Medis">
-            </div>
+      <label>Tanggal Lahir</label>
+      <input type="date" name="tanggalLahir" required>
 
-            <div class="form-group">
-                <label>Nama Pasien</label>
-                <input type="text" name="nama" placeholder="Masukkan Nama Pasien" required>
-            </div>
+      <label>Jenis Kelamin</label>
+      <select name="jenisKelamin" required>
+        <option value="">Pilih</option>
+        <option value="Laki-laki">Laki-laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select>
 
-            <div class="form-group">
-                <label>Tanggal Lahir</label>
-                <input type="date" name="tgl_lahir">
-            </div>
+      <label>Nomor WhatsApp</label>
+      <input type="tel" name="whatsapp" placeholder="08xxxxxxxxxx" required>
 
-            <div class="form-group">
-                <label>Jenis Kelamin</label>
-                <select name="jk">
-                    <option value="">Pilih</option>
-                    <option>Laki-laki</option>
-                    <option>Perempuan</option>
-                </select>
-            </div>
+      <label>Dokter Pengirim</label>
+      <input type="text" name="dokter" placeholder="Nama Dokter">
 
-            <div class="form-group">
-                <label>Nomor WhatsApp</label>
-                <input type="tel" name="wa" placeholder="08xxxxxxxxxx">
-            </div>
+      <label>Jenis Pemeriksaan</label>
+      <select name="jenisPemeriksaan" required>
+        <option value="">Pilih Pemeriksaan</option>
+        <option value="Rontgen">Rontgen</option>
+        <option value="USG">USG</option>
+      </select>
 
-            <div class="form-group">
-                <label>Dokter Pengirim</label>
-                <input type="text" name="dokter" placeholder="Nama Dokter">
-            </div>
+      <label>Keterangan Klinis</label>
+      <textarea name="keterangan" placeholder="Masukkan indikasi klinis"></textarea>
 
-            <div class="form-group">
-                <label>Jenis Pemeriksaan</label>
-                <select name="pemeriksaan">
-                    <option value="">Pilih Pemeriksaan</option>
-                    <option>Rontgen</option>
-                    <option>USG</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Keterangan Klinis</label>
-                <textarea rows="4" placeholder="Masukkan indikasi klinis"></textarea>
-            </div>
-
-            <button type="submit">Simpan Data Pasien</button>
-
-        </form>
-    </div>
-
-</div>
-
-<script>
-document.getElementById("radiologiForm")
-.addEventListener("submit", function(e){
-    e.preventDefault();
-    alert("Data pasien berhasil disimpan!");
-});
-</script>
+      <button type="submit">Simpan Data Pasien</button>
+    </form>
 
 </body>
 </html>
