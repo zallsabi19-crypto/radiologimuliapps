@@ -1,46 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Test Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pasien Radiologi - Klinik Mulia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .form-body {
+            padding: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 13px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+
+        #status.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        #status.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        #status.loading {
+            background: #fff3cd;
+            color: #856404;
+            display: block;
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+            font-size: 11px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Test Form Radiologi</h2>
-    
-    <form id="myForm">
-        <input type="text" name="nomorID" placeholder="Nomor ID" required><br>
-        <input type="text" name="namaPasien" placeholder="Nama Pasien" required><br>
-        <input type="text" name="dokter" placeholder="Dokter" required><br>
-        <input type="text" name="jenisPemeriksaan" placeholder="Jenis Pemeriksaan" required><br>
-        <button type="submit">Submit</button>
-    </form>
-    
-    <div id="result"></div>
-    
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>📋 Form Pendaftaran Pemeriksaan Radiologi</h1>
+                <p>Klinik Mulia</p>
+            </div>
+            <div class="form-body">
+                <form id="patientForm">
+                    <div class="form-group">
+                        <label>Nomor ID (RM) <span class="required">*</span></label>
+                        <input type="text" name="nomorID" id="nomorID" placeholder="Masukkan Nomor Rekam Medis" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Pasien <span class="required">*</span></label>
+                        <input type="text" name="namaPasien" id="namaPasien" placeholder="Masukkan Nama Pasien" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tanggalLahir" id="tanggalLahir">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenisKelamin" id="jenisKelamin">
+                            <option value="">Pilih</option>
+                            <option>Laki-laki</option>
+                            <option>Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nomor WhatsApp</label>
+                        <input type="tel" name="whatsapp" id="whatsapp" placeholder="628xxxxxxxxxxx">
+                        <small>Gunakan format 62, contoh: 62812000000</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dokter Pengirim <span class="required">*</span></label>
+                        <input type="text" name="dokter" id="dokter" placeholder="Nama Dokter" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jenis Pemeriksaan <span class="required">*</span></label>
+                        <select name="jenisPemeriksaan" id="jenisPemeriksaan" required>
+                            <option value="">Pilih Pemeriksaan</option>
+                            <option>Rontgen</option>
+                            <option>USG</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Keterangan Klinis</label>
+                        <textarea name="keterangan" id="keterangan" rows="3" placeholder="Masukkan indikasi klinis"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">💾 Simpan Data Pasien</button>
+                </form>
+
+                <div id="status"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby48eN2ThN00myvJXXLDFPZ91PzX4nTTOEOqaFOWyKUWQ9uMPC0jTeU74QyuU3DaW7H/exec; // GANTI!
-        
-        document.getElementById('myForm').onsubmit = async function(e) {
+        // ========== GANTI DENGAN URL APPS SCRIPT ANDA ==========
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzdCexdcGSoqEFGmTii8kpJLLqiB9TrnyHqLESFGX3bsvXWBRapTtkz2hi0Q4KenkDb9w/exec";
+        // ========================================================
+
+        const form = document.getElementById('patientForm');
+        const statusDiv = document.getElementById('status');
+
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const formData = new URLSearchParams();
-            formData.append('nomorID', document.querySelector('[name="nomorID"]').value);
-            formData.append('namaPasien', document.querySelector('[name="namaPasien"]').value);
-            formData.append('dokter', document.querySelector('[name="dokter"]').value);
-            formData.append('jenisPemeriksaan', document.querySelector('[name="jenisPemeriksaan"]').value);
+            statusDiv.className = 'loading';
+            statusDiv.innerHTML = '⏳ Mengirim data...';
+            
+            const submitBtn = document.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '⏳ Memproses...';
             
             try {
+                const formData = new URLSearchParams();
+                formData.append('nomorID', document.getElementById('nomorID').value);
+                formData.append('namaPasien', document.getElementById('namaPasien').value);
+                formData.append('tanggalLahir', document.getElementById('tanggalLahir').value);
+                formData.append('jenisKelamin', document.getElementById('jenisKelamin').value);
+                formData.append('whatsapp', document.getElementById('whatsapp').value);
+                formData.append('dokter', document.getElementById('dokter').value);
+                formData.append('jenisPemeriksaan', document.getElementById('jenisPemeriksaan').value);
+                formData.append('keterangan', document.getElementById('keterangan').value);
+                
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
-                    body: formData.toString(),
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData.toString()
                 });
-                const text = await response.text();
-                document.getElementById('result').innerHTML = '<pre>' + text + '</pre>';
-            } catch(e) {
-                document.getElementById('result').innerHTML = 'Error: ' + e.message;
+                
+                const result = await response.json();
+                
+                if (result.result === 'success') {
+                    statusDiv.className = 'success';
+                    statusDiv.innerHTML = '✅ ' + result.message;
+                    form.reset();
+                } else {
+                    throw new Error(result.error);
+                }
+                
+            } catch (error) {
+                statusDiv.className = 'error';
+                statusDiv.innerHTML = '❌ Gagal: ' + error.message;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '💾 Simpan Data Pasien';
+                
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 5000);
             }
-        };
+        });
     </script>
 </body>
 </html>
