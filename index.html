@@ -2,12 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Radiologi Klinik Mulia - Pendaftaran Pasien</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiologi Klinik Mulia</title>
     <style>
         * {
             margin: 0;
@@ -16,69 +12,51 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             min-height: 100vh;
             padding: 20px;
         }
 
         .container {
-            max-width: 650px;
+            max-width: 550px;
             margin: 0 auto;
         }
 
-        /* Card Header */
-        .card-header {
+        .card {
             background: white;
-            border-radius: 24px 24px 0 0;
-            padding: 30px 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        .hospital-icon {
+        .header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            width: 70px;
-            height: 70px;
-            border-radius: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .hospital-icon i {
-            font-size: 35px;
+            padding: 30px;
+            text-align: center;
             color: white;
         }
 
-        .card-header h1 {
-            font-size: 24px;
-            color: #1e3c72;
+        .header h1 {
+            font-size: 22px;
             margin-bottom: 8px;
         }
 
-        .card-header p {
-            color: #666;
+        .header p {
             font-size: 14px;
+            opacity: 0.9;
         }
 
-        /* Form Card */
-        .form-card {
-            background: white;
+        .form-body {
             padding: 30px;
-            border-radius: 0 0 24px 24px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
         label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: block;
             font-weight: 600;
             margin-bottom: 8px;
             color: #333;
@@ -86,116 +64,52 @@
         }
 
         label i {
+            margin-right: 8px;
             color: #2a5298;
-            width: 20px;
-        }
-
-        .required {
-            color: #e74c3c;
-            font-size: 12px;
-            margin-left: 4px;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
+            transition: all 0.3s;
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #2a5298;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
         }
 
-        /* Upload Area */
-        .upload-area {
-            border: 2px dashed #cbd5e1;
-            border-radius: 16px;
-            padding: 25px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: #f8fafc;
-        }
-
-        .upload-area:hover {
-            border-color: #2a5298;
-            background: #f1f5f9;
-        }
-
-        .upload-area i {
-            font-size: 40px;
-            color: #94a3b8;
-            margin-bottom: 10px;
-        }
-
-        .upload-area p {
-            color: #64748b;
-            font-size: 14px;
-        }
-
-        .upload-area .small {
+        .required {
+            color: #e74c3c;
             font-size: 12px;
-            color: #94a3b8;
-            margin-top: 8px;
         }
 
-        #fileInput {
-            display: none;
-        }
-
-        .preview-container {
-            margin-top: 15px;
-            display: none;
-        }
-
-        .preview-container img {
-            max-width: 120px;
-            border-radius: 12px;
-            border: 2px solid #e9ecef;
-        }
-
-        /* Submit Button */
         .btn-submit {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             border: none;
             border-radius: 12px;
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            transition: transform 0.2s;
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.3);
         }
 
-        .btn-submit:active {
-            transform: translateY(0);
-        }
-
-        /* Status Message */
         #status {
             margin-top: 20px;
-            padding: 14px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             text-align: center;
-            font-weight: 500;
+            font-size: 14px;
             display: none;
         }
 
@@ -203,209 +117,150 @@
             background: #d4edda;
             color: #155724;
             display: block;
-            border-left: 4px solid #28a745;
         }
 
         #status.error {
             background: #f8d7da;
             color: #721c24;
             display: block;
-            border-left: 4px solid #dc3545;
         }
 
         #status.loading {
             background: #fff3cd;
             color: #856404;
             display: block;
-            border-left: 4px solid #ffc107;
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
-            .card-header, .form-card {
-                padding: 20px;
-            }
-            
-            .card-header h1 {
-                font-size: 20px;
-            }
-            
-            input, select, textarea {
-                padding: 12px 14px;
-            }
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+            font-size: 11px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card-header">
-            <div class="hospital-icon">
-                <i class="fas fa-x-ray"></i>
+        <div class="card">
+            <div class="header">
+                <h1>📋 Pendaftaran Radiologi</h1>
+                <p>Klinik Mulia</p>
             </div>
-            <h1>Pendaftaran Pemeriksaan Radiologi</h1>
-            <p>Klinik Mulia - Melayani dengan Hati</p>
-        </div>
-
-        <div class="form-card">
-            <form id="patientForm">
-                <div class="form-group">
-                    <label><i class="fas fa-id-card"></i> Nomor ID (RM) <span class="required">*</span></label>
-                    <input type="text" name="nomorID" placeholder="Contoh: RM 001234" required>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-user"></i> Nama Pasien <span class="required">*</span></label>
-                    <input type="text" name="namaPasien" placeholder="Nama lengkap pasien" required>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-calendar-alt"></i> Tanggal Lahir</label>
-                    <input type="date" name="tanggalLahir">
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-venus-mars"></i> Jenis Kelamin</label>
-                    <select name="jenisKelamin">
-                        <option value="">Pilih</option>
-                        <option>Laki-laki</option>
-                        <option>Perempuan</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fab fa-whatsapp"></i> Nomor WhatsApp</label>
-                    <input type="tel" name="whatsapp" placeholder="628xxxxxxxxxxx">
-                    <small style="display: block; margin-top: 5px; color: #666;">Gunakan format 62, contoh: 6281234567890</small>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-user-md"></i> Dokter Pengirim <span class="required">*</span></label>
-                    <input type="text" name="dokter" placeholder="Nama dokter pengirim" required>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-microscope"></i> Jenis Pemeriksaan <span class="required">*</span></label>
-                    <select name="jenisPemeriksaan" required>
-                        <option value="">Pilih pemeriksaan</option>
-                        <option>Rontgen</option>
-                        <option>CT Scan</option>
-                        <option>MRI</option>
-                        <option>USG</option>
-                        <option>Mammografi</option>
-                        <option>Fluoroskopi</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-notes-medical"></i> Keterangan Klinis</label>
-                    <textarea name="keterangan" rows="3" placeholder="Indikasi klinis / gejala pasien"></textarea>
-                </div>
-
-                <!-- UPLOAD FOTO SECTION -->
-                <div class="form-group">
-                    <label><i class="fas fa-camera"></i> Foto Pasien <span class="required">*</span></label>
-                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Klik untuk upload foto pasien</p>
-                        <p class="small">Format JPG atau PNG, maksimal 5MB</p>
+            <div class="form-body">
+                <form id="patientForm">
+                    <div class="form-group">
+                        <label><i>🏥</i> Nomor ID (RM) <span class="required">*</span></label>
+                        <input type="text" name="nomorID" id="nomorID" placeholder="Contoh: RM001234" required>
                     </div>
-                    <input type="file" id="fileInput" name="fotoPasien" accept="image/jpeg,image/png,image/jpg" style="display: none;" required>
-                    <div class="preview-container" id="previewContainer">
-                        <img id="previewImage" src="">
-                        <p style="margin-top: 8px; font-size: 12px; color: #666;">Foto siap diupload</p>
+
+                    <div class="form-group">
+                        <label><i>👤</i> Nama Pasien <span class="required">*</span></label>
+                        <input type="text" name="namaPasien" id="namaPasien" placeholder="Nama lengkap" required>
                     </div>
-                </div>
 
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-save"></i> Simpan Data Pasien
-                </button>
-            </form>
+                    <div class="form-group">
+                        <label><i>📅</i> Tanggal Lahir</label>
+                        <input type="date" name="tanggalLahir" id="tanggalLahir">
+                    </div>
 
-            <div id="status"></div>
+                    <div class="form-group">
+                        <label><i>⚥</i> Jenis Kelamin</label>
+                        <select name="jenisKelamin" id="jenisKelamin">
+                            <option value="">Pilih</option>
+                            <option>Laki-laki</option>
+                            <option>Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i>📱</i> Nomor WhatsApp</label>
+                        <input type="tel" name="whatsapp" id="whatsapp" placeholder="628xxxxxxxxxxx">
+                        <small>Format 62, contoh: 6281234567890</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i>👨‍⚕️</i> Dokter Pengirim <span class="required">*</span></label>
+                        <input type="text" name="dokter" id="dokter" placeholder="Nama dokter" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i>🔬</i> Jenis Pemeriksaan <span class="required">*</span></label>
+                        <select name="jenisPemeriksaan" id="jenisPemeriksaan" required>
+                            <option value="">Pilih pemeriksaan</option>
+                            <option>Rontgen</option>
+                            <option>USG</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i>📝</i> Keterangan Klinis</label>
+                        <textarea name="keterangan" id="keterangan" rows="3" placeholder="Indikasi klinis / gejala"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">💾 Simpan Data Pasien</button>
+                </form>
+
+                <div id="status"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Preview foto sebelum upload
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const previewContainer = document.getElementById('previewContainer');
-            const previewImage = document.getElementById('previewImage');
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    previewImage.src = event.target.result;
-                    previewContainer.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
-            } else {
-                previewContainer.style.display = 'none';
-            }
-        });
+        // ========== GANTI DENGAN URL APPS SCRIPT ANDA ==========
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby48eN2ThN00myvJXXLDFPZ91PzX4nTTOEOqaFOWyKUWQ9uMPC0jTeU74QyuU3DaW7H/exec";
+        // ======================================================
 
-        // ========== GANTI URL INI DENGAN URL APPS SCRIPT ANDA ==========
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYbCAGY5x5orPauhnQLwtg-1ECBWQpzmduvlknnaajXhDLgtjD-RN36Uwjzqpkuer7oA/exec";
-        // =================================================================
+        const form = document.getElementById('patientForm');
+        const statusDiv = document.getElementById('status');
 
-        // Handle form submit
-        document.getElementById('patientForm').addEventListener('submit', async function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const statusDiv = document.getElementById('status');
             statusDiv.className = 'loading';
-            statusDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Mengirim data dan upload foto...';
-            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = '⏳ Mengirim data...';
             
-            // Nonaktifkan tombol submit
             const submitBtn = document.querySelector('.btn-submit');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Memproses...';
+            submitBtn.innerHTML = '⏳ Memproses...';
             
             try {
-                // Ambil file foto
-                const fileInput = document.getElementById('fileInput');
-                const file = fileInput.files[0];
-                
-                if (!file) {
-                    throw new Error('Foto pasien wajib diupload!');
-                }
-                
-                // Buat FormData untuk dikirim
-                const formData = new FormData();
-                formData.append('nomorID', document.querySelector('[name="nomorID"]').value);
-                formData.append('namaPasien', document.querySelector('[name="namaPasien"]').value);
-                formData.append('tanggalLahir', document.querySelector('[name="tanggalLahir"]').value);
-                formData.append('jenisKelamin', document.querySelector('[name="jenisKelamin"]').value);
-                formData.append('whatsapp', document.querySelector('[name="whatsapp"]').value);
-                formData.append('dokter', document.querySelector('[name="dokter"]').value);
-                formData.append('jenisPemeriksaan', document.querySelector('[name="jenisPemeriksaan"]').value);
-                formData.append('keterangan', document.querySelector('[name="keterangan"]').value);
-                formData.append('fotoPasien', file);
+                // Kumpulkan data
+                const formData = new URLSearchParams();
+                formData.append('nomorID', document.getElementById('nomorID').value);
+                formData.append('namaPasien', document.getElementById('namaPasien').value);
+                formData.append('tanggalLahir', document.getElementById('tanggalLahir').value);
+                formData.append('jenisKelamin', document.getElementById('jenisKelamin').value);
+                formData.append('whatsapp', document.getElementById('whatsapp').value);
+                formData.append('dokter', document.getElementById('dokter').value);
+                formData.append('jenisPemeriksaan', document.getElementById('jenisPemeriksaan').value);
+                formData.append('keterangan', document.getElementById('keterangan').value);
                 
                 // Kirim ke Apps Script
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Untuk mengatasi CORS
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData.toString()
                 });
                 
-                // Karena mode no-cors, kita tidak bisa baca response
-                // Asumsikan berhasil
-                statusDiv.className = 'success';
-                statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> ✅ Data, Foto & Laporan Berhasil Dibuat!';
-                document.getElementById('patientForm').reset();
-                document.getElementById('previewContainer').style.display = 'none';
-                document.getElementById('fileInput').value = '';
+                const result = await response.json();
+                
+                if (result.result === 'success') {
+                    statusDiv.className = 'success';
+                    statusDiv.innerHTML = '✅ ' + result.message;
+                    form.reset();
+                } else {
+                    throw new Error(result.error);
+                }
                 
             } catch (error) {
                 statusDiv.className = 'error';
-                statusDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ❌ Gagal: ' + error.message;
+                statusDiv.innerHTML = '❌ Gagal: ' + error.message;
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-save"></i> Simpan Data Pasien';
+                submitBtn.innerHTML = '💾 Simpan Data Pasien';
                 
-                // Hilangkan status setelah 5 detik
                 setTimeout(() => {
                     statusDiv.style.display = 'none';
                 }, 5000);
